@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { menData } from '../data/mens'
 import './MensPage.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+ 
+import MensItemPage from './MensItemPage';
 
 const MensPage = () => {
+  
     return (
       <div className="page-container">
         <div className="navbar-filters">
@@ -16,27 +17,9 @@ const MensPage = () => {
          <h1 className="main-content-head">CLOTHING & ACCESSORIES</h1>
          <div className="product-display-item">
          {
-           menData.map((item, index) => {
-              return (
-                 <div className="product-item" key={index}>
-                    <div className="product-image">
-                    <img src={item.image} alt={item.model}/>
-                    </div>
-                    <div className="product-desc">
-                        <h2>{item.brand},{item.type}</h2>
-                        <p className="first">{item.model}</p>
-                        <p className="second">{item.description}</p>
-                        <span> <span> ₹ {item.sprice} <span className="product-strikeout">₹{item.cprice}</span></span><span className="discount">{item.discount}off</span>
-                        </span>
-                           </div>
-                    <div className="product-stars">
-                    <FontAwesomeIcon icon={faHeart} />
-
-                        </div>
-                    
-                 </div>
-                    
-              );
+           menData.map((item) => {
+            
+              return <MensItemPage key={item.id} id={item.id} model={item.model} type={item.type} description={item.description} cprice={item.cprice} sprice={item.sprice} discount={item.discount} image={item.image} brand={item.brand}/>
            })}
            </div>
 
