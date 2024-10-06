@@ -1,0 +1,95 @@
+.page-container {
+    display: flex;
+    margin:auto;
+    width: 94%; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .navbar-filters {
+    width: 20%;
+    background-color: #fff; /* You can choose your own background */
+    padding: 20px; /* Some padding */
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+  
+  .main-content {
+    width: 80%;
+    padding:0px;
+    overflow-y: auto; /* To handle scrolling if the content is long */
+  }
+  .product-display{
+    margin-left:2%;
+     margin-right:0px;
+     border:2px solid black;
+     padding:20px;
+  }
+
+  .main-content-head{
+    text-align:left;
+    font-weight:550;
+    padding:20px;
+    padding-top:0px;
+    
+  }
+  .product-display-item{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(245px,1fr));
+    margin-top: 30px;
+    gap:30px;
+    row-gap:50px;
+    
+  }
+  .product-item{
+    background-color:#fff;
+    padding:20px;
+  }
+
+  .product-image{
+    height:200px;
+    overflow:hidden;
+  }
+  .product-image img{
+    width:100%;
+    height:230px;
+  }
+  .product-desc{
+    text-align:left;
+    padding-top:2px;
+    padding-bottom:0px;
+    margin:0px;
+    
+  }
+  .product-desc h2{
+    margin:5px;
+    font-size:20px;
+    font-weight:600;
+  }
+  .product-desc .first{
+    font-weight:500;
+  }
+  .product-desc .second{
+    font-weight:350;
+  }
+  .product-desc p{
+   margin:2px;
+  }
+  .product-desc span{
+    margin-left:5px;
+    font-size:20px;
+    font-weight:600;
+  }
+  .product-desc .product-strikeout {
+    text-decoration: line-through;
+    color: #636363; 
+    margin-right: 8px;
+    font-size:16px;
+    font-weight:500;
+  }
+  .product-desc .discount{
+    color:#388e3c;
+    font-size:15px;
+    margin-left:0px;
+    font-weight:600;
+  }
+
+  
