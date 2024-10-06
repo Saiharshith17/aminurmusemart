@@ -91,5 +91,13 @@
     margin-left:0px;
     font-weight:600;
   }
+  .span-element{
+    display:flex;
+  }
+  .product-stars{
+    margin:0px;
+    padding-top:10px;
+    padding-right:2px;
+  }
 
   
