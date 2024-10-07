@@ -39,6 +39,7 @@ const MensPage = () => {
   };
     return (
       <div className="page-container">
+       
   <div className="navbar-filters">
     <div className="navbar-header">
       <div className="navbar-header-photo">
@@ -333,7 +334,16 @@ const MensPage = () => {
 
   {/* Main Content */}
   <div className="main-content">
+ 
     <div className="product-display">
+    <div className="navbar-header-mobile">
+      <div className="navbar-header-photo-mobile">
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/header.jpg`} alt="Header Image" />
+    </div>
+    <div className="navbar-header-line-mobile">
+      <h2>MODERN MEN'S FASHION</h2>
+    </div>
+    </div>
       <h1 className="main-content-head">CLOTHING & ACCESSORIES</h1>
       <div className="product-display-item">
         {filteredMenData.map((item) => (
