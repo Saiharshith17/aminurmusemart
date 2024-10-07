@@ -117,6 +117,7 @@
   }
   .span-element{
     display:flex;
+    justify-content:space-between;
   }
   .product-stars{
     margin:0px;
@@ -184,7 +185,7 @@
   }
   /* MensPage.css */
 .price-selector input {
-  width: 100px;
+  width: 90px;
   margin: 0 5px;
   padding: 5px;
   border: 2px solid #606060;
@@ -253,6 +254,242 @@ input[type="checkbox"] {
     padding:0px 10px 10px 0px;
     
   }
+  .navbar-header-mobile{
+    display:none;
+  }
+
+
+@media (max-width:1090px){
+  .navbar-filters {
+    width: 30%;
+    
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 0px; 
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); 
+  }
+  .main-content {
+    width: 70%;
+    padding:0px;
+    overflow-y: auto; 
+  }
+  .navbar-header{
+    background-color:#fff;
+    padding:0px;
+    margin-bottom:20px;
+ }
+ .navbar-header-photo{
+   width:100%;
+ }
+ .navbar-header-photo img{
+   width:100%;
+ }
+ .navbar-header-line{
+   width:100%;
+ }
+ .navbar-header-line h2{
+   font-size:12px;
+ }
+ .product-desc h2{
+  font-size:18px;
+
+}
+.product-desc .first{
+  font-size:16px;
+}
+.product-desc .second{
+  font-size:14px;
+}
+
+.product-desc span{
+  font-size:16px;
+
+}
+.product-desc .product-strikeout {
+  font-size:14px;
+}
+.product-desc .discount{
+  font-size:14px;
+}
+  
+
+}
+@media (max-width: 960px) {
+  .price-selector{
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    border-bottom:2px solid rgb(122, 122, 122);
+    text-align:left;
+  }
+  .price-range{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+
+  }
+  .product-desc .second{
+    font-weight:350;
+    display:none;
+  }
+  .product-desc{
+    text-align:left;
+    padding-top:2px;
+    padding-bottom:0px;
+    margin:0px;
+    
+  }
+  .product-desc h2{
+    font-size:16px;
+
+  }
+  .product-desc .first{
+    font-size:14px;
+  }
+  
+ 
+  .product-desc span{
+    font-size:16px;
+
+  }
+  .product-desc .product-strikeout {
+    font-size:14px;
+  }
+  .product-desc .discount{
+    font-size:14px;
+  }
+
+}
+
+
+@media (max-width: 870px) {
+    .navbar-filters{
+      width:0%;
+      display:none;
+    }
+    .navbar-header-mobile{
+      background-color:#fff;
+      padding:0px;
+      margin-bottom:10px;
+      display:flex;
+      flex-direction:column;
+   }
+
+
+
+
+   .main-content {
+    width: 100%;
+    padding:0px;
+    overflow-y: auto; 
+  }
+  .product-display{
+    margin-left:0%;
+     margin-right:0px;
+     padding:10px;
+  }
+
+  .main-content-head{
+    text-align:left;
+    font-weight:550;
+    padding:0px;
+    padding-top:0px;
+    font-size:3.6vw;
+  }
+  .product-display-item{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(33%,1fr));
+    margin-top: 20px;
+    gap:30px;
+    row-gap:50px;
+    
+  }
+  .product-item{
+    background-color:#fff;
+    padding:20px;
+  }
+
+  .product-image{
+    height:200px;
+    overflow:hidden;
+  }
+  .product-image img{
+    width:100%;
+    height:230px;
+  }
+  
+
+
+  .product-desc h2{
+    font-size:16px;
+
+  }
+  .product-desc .first{
+    font-size:14px;
+  }
+  .product-desc span{
+    font-size:16px;
+
+  }
+  .product-desc .product-strikeout {
+    font-size:14px;
+  }
+  .product-desc .discount{
+    font-size:14px;
+  }
+  .product-desc .second{
+    font-weight:350;
+    display:none;
+  }
+  .span-element{
+    display:flex;
+    justify-content:space-between;
+  }
+  .product-stars{
+    margin:0px;
+    padding-top:10px;
+    padding-right:2px;
+  }
+
+   .navbar-header-photo-mobile{
+     width:90%;
+     margin:auto;
+   }
+   .navbar-header-photo-mobile img{
+     width:100%;
+   }
+   .navbar-header-line-mobile{
+     width:100%;
+   }
+   .navbar-header-line-mobile h2{
+     font-size:2.6vw;
+   }
+}
+@media (max-width: 430px) {
+  .product-display-item{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(100%,1fr));
+    margin-top: 10px;
+    gap:30px;
+    row-gap:30px;
+    
+  }
+  .main-content-head{
+    text-align:left;
+    font-weight:550;
+    padding:0px;
+    padding-top:0px;
+    font-size:16px;
+  }
+  .navbar-header-line-mobile h2{
+    font-size:14px;
+  }
+  .product-desc span{
+    margin-left:0px;
+
+  }
+
+}
 
   
 
