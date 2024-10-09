@@ -6,11 +6,11 @@ export const menData = [{
     "brand": "Nike",
     "model": "Sporty Tee",
     "cprice": "1290.99",
-     "discount":"60%",
+     "discount":"60",
      "rating":"5",
     "sprice" :"510.99",  
      "category": "Clothing",
-    "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+    "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "2",
@@ -20,11 +20,11 @@ export const menData = [{
     "brand": "Nike",
     "model": "ClassicFit",
     "cprice": "499.99",
-     "discount":"60%",
+     "discount":"60",
      "rating":"4",
     "sprice" :"199.90",  
      "category": "Clothing",
-     "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+     "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "3",
@@ -34,11 +34,11 @@ export const menData = [{
     "brand": "Levi's",
     "model": "511 Slim Fit",
     "cprice": "599.50",
-     "discount":"60%",
+     "discount":"60",
      "rating":"5",
     "sprice" :"239.50",  
      "category": "Clothing",
-     "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+     "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
     },
 {
     "id": "4",
@@ -48,11 +48,11 @@ export const menData = [{
     "brand": "Ralph Lauren",
     "model": "Sporty Tee",
     "cprice": "699.00",
-     "discount":"60%",
+     "discount":"60",
      "rating":"3",
     "sprice" :"129.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "5",
@@ -62,11 +62,11 @@ export const menData = [{
     "brand": "The North Face",
     "model": "ClassicFit",
     "cprice": "1299.99",
-     "discount":"40%",
+     "discount":"40",
      "rating":"5",
     "sprice":"779.50",    
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "6",
@@ -76,11 +76,11 @@ export const menData = [{
     "brand": "Under Armour",
     "model": "511 Slim Fit",
     "cprice": "3499.99",
-     "discount":"30%",
+     "discount":"30",
      "rating":"4",
     "sprice" :"2449.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "7",
@@ -90,11 +90,11 @@ export const menData = [{
     "brand": "Tommy Hilfiger",
     "model": "ClassicFit",
     "cprice": "799.50",
-     "discount":"40%",
+     "discount":"40",
      "rating":"5",
     "sprice" :"479.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "8",
@@ -104,11 +104,11 @@ export const menData = [{
     "brand": "Tommy Hilfiger",
     "model": "Sporty Tee",
     "cprice": "1599.00",
-     "discount":"30%",
+     "discount":"30",
      "rating":"3",
     "sprice":"1119.50",    
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "9",
@@ -118,11 +118,11 @@ export const menData = [{
     "brand": "Adidas",
     "model": "511 Slim Fit",
     "cprice": "440.99",
-     "discount":"40%",
+     "discount":"40",
      "rating":"4",
     "sprice" :"264.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "10",
@@ -132,11 +132,11 @@ export const menData = [{
     "brand": "Adidas",
     "model": "511 Slim Fit",
     "cprice": "3999.99",
-     "discount":"30%",
+     "discount":"30",
      "rating":"5",
     "sprice" :"2799.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "11",
@@ -146,11 +146,11 @@ export const menData = [{
     "brand": "Ralph Lauren",
     "model": "511 Slim Fit",
     "cprice": "2999.50",
-     "discount":"40%",
+     "discount":"40",
      "rating":"4",
     "sprice" :"1799.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "12",
@@ -160,11 +160,11 @@ export const menData = [{
     "brand": "Under Armour",
     "model": "Sporty Tee",
     "cprice": "1399.00",
-    "discount":"60%",
+    "discount":"60",
     "rating":"3",
     "sprice":"1329.50",    
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "13",
@@ -174,11 +174,11 @@ export const menData = [{
     "brand": "Nike",
     "model": "Sporty Tee",
     "cprice": "1290.99",
-     "discount":"60%",
+     "discount":"60",
      "rating":"4",
     "sprice" :"510.99",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "14",
@@ -188,11 +188,11 @@ export const menData = [{
     "brand": "Nike",
     "model": "ClassicFit",
     "cprice": "499.99",
-     "discount":"60%",
+     "discount":"60",
      "rating":"5",
     "sprice" :"199.90",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "15",
@@ -202,7 +202,7 @@ export const menData = [{
     "brand": "Levi's",
     "model": "511 Slim Fit",
     "cprice": "599.50",
-     "discount":"60%",
+     "discount":"60",
      "rating":"5",
     "sprice" :"239.50",  
      "category": "Clothing",
@@ -216,11 +216,11 @@ export const menData = [{
     "brand": "Ralph Lauren",
     "model": "Sporty Tee",
     "cprice": "699.00",
-     "discount":"60%",
+     "discount":"60",
      "rating":"4",
     "sprice" :"129.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "17",
@@ -230,11 +230,11 @@ export const menData = [{
     "brand": "The North Face",
     "model": "ClassicFit",
     "cprice": "1299.99",
-     "discount":"40%",
+     "discount":"40",
      "rating":"3",
     "sprice":"779.50",    
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "18",
@@ -244,7 +244,7 @@ export const menData = [{
     "brand": "Under Armour",
     "model": "Tech Mesh Shorts",
     "cprice": "3499.99",
-     "discount":"30%",
+     "discount":"30",
      "rating":"4",
     "sprice" :"2449.50",  
      "category": "Clothing",
@@ -258,7 +258,7 @@ export const menData = [{
     "brand": "Tommy Hilfiger",
     "model": "ClassicFit",
     "cprice": "799.50",
-     "discount":"40%",
+     "discount":"40",
      "rating":"5",
     "sprice" :"479.50",  
      "category": "Clothing",
@@ -272,11 +272,11 @@ export const menData = [{
     "brand": "Tommy Hilfiger",
     "model": "Sporty Tee",
     "cprice": "1599.00",
-     "discount":"30%",
+     "discount":"30",
      "rating":"5",
     "sprice":"1119.50",    
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "21",
@@ -286,11 +286,11 @@ export const menData = [{
     "brand": "Adidas",
     "model": "Essentials Hoodie",
     "cprice": "440.99",
-    "discount":"40%",
+    "discount":"40",
     "rating":"4",
     "sprice" :"264.50",  
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "22",
@@ -300,11 +300,11 @@ export const menData = [{
     "brand": "Adidas",
     "model": "511 Slim Fit",
     "cprice": "3999.99",
-     "discount":"30%",
+     "discount":"30",
      "rating":"4",
     "sprice" :"2799.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "23",
@@ -314,11 +314,11 @@ export const menData = [{
     "brand": "Ralph Lauren",
     "model": "511 Slim Fit",
     "cprice": "2999.50",
-     "discount":"40%",
+     "discount":"40",
      "rating":"5",
     "sprice" :"1799.50",  
      "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 {
     "id": "24",
@@ -328,10 +328,10 @@ export const menData = [{
     "brand": "Under Armour",
     "model": "Sporty Tee",
     "cprice": "1899.00",
-    "discount":"30%",
+    "discount":"30",
     "rating":"3",
     "sprice":"1329.50",    
     "category": "Clothing",
- "description": "A comfortable and stylish sporty Mens Plain  with moisture-wicking fabric."
+ "description": "A comfortable and stylish sporty Mens Plain  with  fabric."
 },
 ]

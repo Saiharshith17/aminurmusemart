@@ -18,7 +18,7 @@ function MensItemPage({id,model,type,description,cprice,sprice,discount,image,br
         <h2>{brand},{type}</h2>
         <p className="first">{model}</p>
         <p className="second">{description}</p>
-        <span> <span> ₹ {sprice} <span className="product-strikeout">₹{cprice}</span></span><span className="discount">{discount}off</span>
+        <span> <span> ₹ {sprice} <span className="product-strikeout">₹{cprice}</span></span><span className="discount">{discount}%off</span>
         </span>
            </div>
     <div className="product-stars">

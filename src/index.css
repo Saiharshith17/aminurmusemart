@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family:Outfit;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   .main-content::-webkit-scrollbar {
