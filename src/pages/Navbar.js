@@ -494,7 +494,19 @@ const Navbar = () => {
   </div>
 </div>
 
-        <div className="product-display">
+        <div className="product-display"  onClick={() => {
+  
+    setIsDropdownOpen({
+      type: false,
+      brand: false,
+      price: false,
+      rating: false,
+      discount: false,
+      sort: false,
+    });
+
+  
+  }}>
           <div className="navbar-header-mobile">
             <div className="navbar-header-photo-mobile">
               <img src={`${process.env.PUBLIC_URL}/assets/MenWear/header.jpg`} alt="Header Image" />
@@ -504,7 +516,7 @@ const Navbar = () => {
             </div>
           </div>
           <h1 className="main-content-head">CLOTHING & ACCESSORIES</h1>
-          <div className="product-display-item">
+          <div className="product-display-item" >
             {sortedMenData.map((item) => (
               <MensItemPage
                 key={item.id}

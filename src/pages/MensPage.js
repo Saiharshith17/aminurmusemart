@@ -345,7 +345,7 @@ const MensPage = () => {
     </div>
     </div>
       <h1 className="main-content-head">CLOTHING & ACCESSORIES</h1>
-      <div className="product-display-item">
+      <div className="product-display-item" >
         {filteredMenData.map((item) => (
           <MensItemPage
             key={item.id}
