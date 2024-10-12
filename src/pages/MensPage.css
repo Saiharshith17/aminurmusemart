@@ -496,14 +496,13 @@ input[type="checkbox"] {
   border-radius:20px;
   text-align:center;
 }    
-    /* Dropdown menu will appear below the button */
-.dropdown-menu-mobile {
+    .dropdown-menu-mobile {
   position: fixed;
   background-color: white;
   border: 2px solid #ccc;
-  margin-top: 10px; /* Creates space between the button and the dropdown */
-  z-index: 1000; /* Ensures it stays on top */
-  width: 100%; /* Adjust width as needed */
+  margin-top: 10px; 
+  z-index: 1000; 
+  width: 100%; 
   margin:0px;
   padding:10px 0px;
   bottom:0px;
