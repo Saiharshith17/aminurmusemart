@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
-import { menData } from '../data/mens'
-import './MensPage.css'
+import React, { useState,useEffect } from 'react';
+import { menData } from '../data/mens';
+import './MensPage.css';
 
 import MensItemPage from './MensItemPage';
 
@@ -11,6 +11,15 @@ const MensPage = () => {
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedRating, setSelectedRating] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState({
+    type: false,
+    brand: false,
+    model: false,
+    rating: false,
+    discount: false,
+    sort:false,
+  });
+
   const handleMultiSelect = (value, setState, state) => {
     if (state.includes(value)) {
       setState(state.filter((item) => item !== value));
@@ -18,16 +27,37 @@ const MensPage = () => {
       setState([...state, value]);
     }
   };
-  const filteredMenData = menData.filter((item) => {
-    return (
-      (selectedType.length === 0 || selectedType.includes(item.type)) &&
-      (selectedBrand.length === 0 || selectedBrand.includes(item.brand)) &&
-      (selectedModel.length === 0 || selectedModel.includes(item.model)) &&
-      (selectedRating.length === 0 || selectedRating.includes(item.rating)) &&
-      (selectedDiscount.length === 0 || selectedDiscount.includes(item.discount)) &&
-      item.sprice >= priceRange[0] && item.sprice <= priceRange[1]
-    );
+  
+  const [DropdownOpen, setDropdownOpen] = useState({
+    type: false,
+    brand: false,
+    price: false,
+    rating: false,
+    discount: false,
+    sort:false,
   });
+  
+  
+  const [filteredMenData, setFilteredMenData] = useState([]); // Initialize filtered data state
+
+  // Filter menData based on the selected filters
+  useEffect(() => {
+    const updatedFilteredData = menData.filter((item) => {
+      return (
+        (selectedType.length === 0 || selectedType.includes(item.type)) &&
+        (selectedBrand.length === 0 || selectedBrand.includes(item.brand)) &&
+        (selectedModel.length === 0 || selectedModel.includes(item.model)) &&
+        (selectedRating.length === 0 || selectedRating.includes(item.rating)) &&
+        (selectedDiscount.length === 0 || selectedDiscount.includes(item.discount)) &&
+        item.sprice >= priceRange[0] && item.sprice <= priceRange[1]
+      );
+    });
+  
+    setFilteredMenData(updatedFilteredData); // Update the filtered data state
+  }, [menData, selectedType, selectedBrand, selectedModel, selectedRating, selectedDiscount, priceRange]); // Re-run filter when any dependency changes
+  
+  
+
   const handleMinPriceChange = (e) => {
     const minPrice = Math.max(0, parseInt(e.target.value));
     setPriceRange([minPrice, priceRange[1]]);
@@ -37,92 +67,99 @@ const MensPage = () => {
     const maxPrice = Math.min(5000, parseInt(e.target.value));
     setPriceRange([priceRange[0], maxPrice]);
   };
-    return (
-      <div className="page-container">
-       
-  <div className="navbar-filters">
-    <div className="navbar-header">
-      <div className="navbar-header-photo">
-    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/header.jpg`} alt="Header Image" />
-    </div>
-    <div className="navbar-header-line">
-      <h2>MODERN MEN'S FASHION</h2>
-    </div>
-    </div>
-    <div className="navbar-start">
-    <h1 className="filters-head">Filters</h1>
+  const toggleDropdown = (filter) => {
+    setIsDropdownOpen((prevState) => ({
+      type: filter === 'type' ? !prevState.type : false,
+      brand: filter === 'brand' ? !prevState.brand : false,
+      price: filter === 'price' ? !prevState.price : false,
+      rating: filter === 'rating' ? !prevState.rating : false,
+      discount: filter === 'discount' ? !prevState.discount : false,
+      sort: filter === 'sort' ? !prevState.sort : false, 
+      model: filter==='model'? !prevState.model : false,
+    }));
+  };
 
-    {/* Type selection */}
+  const [sortedMenData, setSortedMenData] = useState(filteredMenData); // Initialize with original menData
+
+
+  const handleSort = (sortType) => {
+    let sortedData = [...filteredMenData]; // Copy the original data
+
+    switch (sortType) {
+      case 'relevant': 
+        sortedData = [...filteredMenData];
+        break;
+      case 'priceLowToHigh':
+        sortedData.sort((a, b) => a.sprice - b.sprice);
+        break;
+      case 'priceHighToLow':
+        sortedData.sort((a, b) => b.sprice - a.sprice);
+        break;
+      case 'discount':
+        sortedData.sort((a, b) => b.discount - a.discount);
+        break;
+      case 'rating':
+        // Assuming relevance is determined by some property; adjust accordingly
+        sortedData.sort((a, b) => b.rating - a.rating);
+        break;
+      default:
+        break;
+    }
+    setFilteredMenData(sortedData);
+    setSortedMenData(sortedData); // Update state with sorted data
+    setIsDropdownOpen({ sort: false }); // Close the dropdown after sorting
     
-    <div className="type-selection">
-      <label className="highlight">CATEGORIES</label>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="plainTshirt"
-          value="Mens Plain Tshirts"
-          checked={selectedType.includes("Mens Plain Tshirts")}
-          onChange={() => handleMultiSelect("Mens Plain Tshirts", setSelectedType, selectedType)}
-        />
-        <label htmlFor="plainTshirt">Mens Plain Tshirts</label>
-      </div>
+  };
+  
+  
+  return (
+    <div className="page-container">
+      <div className="navbar-filters">
+        <div className="navbar-header">
+          <div className="navbar-header-photo">
+            <img src={`${process.env.PUBLIC_URL}/assets/MenWear/header.jpg`} alt="Header Image" />
+          </div>
+          <div className="navbar-header-line">
+            <h2>MODERN MEN'S FASHION</h2>
+          </div>
+        </div>
+        <div className="navbar-start">
+          <h1 className="filters-head">Filters</h1>
 
-      <div className="type">
-        <input
-          type="checkbox"
-          id="dressShirt"
-          value="Dress Shirt"
-          checked={selectedType.includes("Dress Shirt")}
-          onChange={() => handleMultiSelect("Dress Shirt", setSelectedType, selectedType)}
-        />
-        <label htmlFor="dressShirt">Dress Shirt</label>
-      </div>
+          {/* Type selection */}
+          <div className="type-selection">
+            <label className="highlight">CATEGORIES</label>
+            <button onClick={() => toggleDropdown('type')} className="dropdown-toggle">
+  {isDropdownOpen.type ? (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowup.png`} alt="Up Arrow" className="arrow-icon" />
+  ) : (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowdown.png`} alt="Down Arrow" className="arrow-icon" />
+  )}
+  Categories & Accessories
+</button>
 
-      <div className="type">
-        <input
-          type="checkbox"
-          id="Jeans"
-          value="Jeans"
-          checked={selectedType.includes("Jeans")}
-          onChange={() => handleMultiSelect("Jeans", setSelectedType, selectedType)}
-        />
-        <label htmlFor="Jeans">Jeans</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="Hoodie"
-          value="Hoodie"
-          checked={selectedType.includes("Hoodie")}
-          onChange={() => handleMultiSelect("Hoodie", setSelectedType, selectedType)}
-        />
-        <label htmlFor="Hoodie">Hoodie</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="Blazer"
-          value="Blazer"
-          checked={selectedType.includes("Blazer")}
-          onChange={() => handleMultiSelect("Blazer", setSelectedType, selectedType)}
-        />
-        <label htmlFor="Blazer">Blazer</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="Jacket"
-          value="Jacket"
-          checked={selectedType.includes("Jacket")}
-          onChange={() => handleMultiSelect("Jacket", setSelectedType, selectedType)}
-        />
-        <label htmlFor="Jacket">Jacket</label>
-      </div>
-      {/* Add more types in the same format */}
-    </div>
 
-    {/* Brand selection */}
-    <div className="brand-selection">
+
+ {isDropdownOpen.type && (
+              <div className="dropdown-menu">
+                {['Mens Plain Tshirts', 'Dress Shirt', 'Jeans', 'Hoodie', 'Blazer', 'Jacket'].map((type) => (
+                  <div className="type" key={type}>
+                    <input
+                      type="checkbox"
+                      id={type}
+                      value={type}
+                      checked={selectedType.includes(type)}
+                      onChange={() => handleMultiSelect(type, setSelectedType, selectedType)}
+                    />
+                    <label htmlFor={type}>{type}</label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Brand selection */}
+          <div className="brand-selection">
       <label className="highlight">BRANDS</label>
       <div className="type">
         <input
@@ -186,11 +223,218 @@ const MensPage = () => {
       </div>
     </div>
 
-    {/* Price Range */}
-    <div className="price-selector">
-      <label className="highlight">PRICE RANGE</label><br />
-      <div className="price-range">
-        <div className="price">
+          {/* Price Range */}
+          <div className="price-selector">
+            <label className="highlight">PRICE RANGE</label><br />
+            <div className="price-range">
+              <div className="price">
+                <input
+                  type="number"
+                  min="0"
+                  max="5000"
+                  value={priceRange[0]}
+                  onChange={handleMinPriceChange}
+                  placeholder="Min Price"
+                />
+              </div>
+              <p>To</p>
+              <div className="price">
+                <input
+                  type="number"
+                  min="0"
+                  max="5000"
+                  value={priceRange[1]}
+                  onChange={handleMaxPriceChange}
+                  placeholder="Max Price"
+                />
+              </div>
+            </div>
+            <div className="price-const-range">Price: ₹{priceRange[0]} - ₹{priceRange[1]}</div>
+          </div>
+
+          {/* Model selection */}
+          <div className="model-selection">
+          <button onClick={() => toggleDropdown('model')} className="dropdown-toggle">MODEL
+  {isDropdownOpen.model ? (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowup.png`} alt="Up Arrow" className="arrow-icon" />
+  ) : (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowdown.png`} alt="Down Arrow" className="arrow-icon" />
+  )}
+
+</button>
+            {isDropdownOpen.model && (
+              <div className="dropdown-menu">
+                {['Sporty Tee', 'ClassicFit', '511 Slim Fit'].map((model) => (
+                  <div className="type" key={model}>
+                    <input
+                      type="checkbox"
+                      id={model}
+                      value={model}
+                      checked={selectedModel.includes(model)}
+                      onChange={() => handleMultiSelect(model, setSelectedModel, selectedModel)}
+                    />
+                    <label htmlFor={model}>{model}</label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Rating selection */}
+          <div className="rating-selection">
+          <button onClick={() => toggleDropdown('rating')} className="dropdown-toggle">RATING
+  {isDropdownOpen.rating ? (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowup.png`} alt="Up Arrow" className="arrow-icon" />
+  ) : (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowdown.png`} alt="Down Arrow" className="arrow-icon" />
+  )}
+
+</button>
+            {isDropdownOpen.rating && (
+              <div className="dropdown-menu">
+                {['5', '4', '3', '2'].map((rating) => (
+                  <div className="type" key={rating}>
+                    <input
+                      type="checkbox"
+                      id={`rating-${rating}`}
+                      value={rating}
+                      checked={selectedRating.includes(rating)}
+                      onChange={() => handleMultiSelect(rating, setSelectedRating, selectedRating)}
+                    />
+                    <label htmlFor={`rating-${rating}`}>{rating} Stars & Above</label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Discount selection */}
+          <div className="discount-selection">
+          <button onClick={() => toggleDropdown('discount')} className="dropdown-toggle">DISCOUNT
+  {isDropdownOpen.discount ? (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowup.png`} alt="Up Arrow" className="arrow-icon" />
+  ) : (
+    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/arrowdown.png`} alt="Down Arrow" className="arrow-icon" />
+  )}
+
+</button>
+             {isDropdownOpen.discount && (
+              <div className="dropdown-menu">
+                {['60%', '40%', '30%'].map((discount) => (
+                  <div className="type" key={discount}>
+                    <input
+                      type="checkbox"
+                      id={`discount-${discount}`}
+                      value={discount}
+                      checked={selectedDiscount.includes(discount)}
+                      onChange={() => handleMultiSelect(discount, setSelectedDiscount, selectedDiscount)}
+                    />
+                    <label htmlFor={`discount-${discount}`}>{discount} & Above</label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="main-content">
+      <div className="navbar-filters-mobile">
+
+  <div className="navbar-start-mobile">
+ 
+  <div className="sort-by-selection-mobile">
+  <label className="highlight-mobile">SORT BY</label>
+  <button onClick={() => toggleDropdown('sort')} className="dropdown-toggle-mobile">
+    Sort
+  </button>
+  {isDropdownOpen.sort && (
+    <div className="dropdown-menu-mobile">
+       <div className="type-mobile" onClick={() => handleSort('relevant')}>
+        <label>Relevance</label>
+      </div>
+      <div className="type-mobile" onClick={() => handleSort('priceLowToHigh')}>
+        <label>Price: Low to High</label>
+      </div>
+      <div className="type-mobile" onClick={() => handleSort('priceHighToLow')}>
+        <label>Price: High to Low</label>
+      </div>
+      <div className="type-mobile" onClick={() => handleSort('discount')}>
+        <label>Discount</label>
+      </div>
+      <div className="type-mobile" onClick={() => handleSort('rating')}>
+        <label>Ratings</label>
+      </div>
+    </div>
+  )}
+</div>
+
+    {/* Type selection */}
+    <div className="type-selection-mobile ">
+  <label className="highlight-mobile">CATEGORIES</label>
+  <button onClick={() => toggleDropdown('type')} className="dropdown-toggle-mobile">
+   
+    Categories
+  </button>
+  {isDropdownOpen.type && (
+    <div className="dropdown-menu-mobile">
+      {['Mens Plain Tshirts', 'Dress Shirt', 'Jeans', 'Hoodie', 'Blazer', 'Jacket'].map((type) => (
+        <div className="type-mobile" key={type}>
+          <input
+            type="checkbox"
+            id={type}
+            value={type}
+            checked={selectedType.includes(type)}
+            onChange={() => {handleMultiSelect(type, setSelectedType, selectedType);
+              handleSort('relevant');}
+            }
+            
+          />
+          <label htmlFor={type}>{type}</label>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+
+{/* Brand selection */}
+<div className="brand-selection-mobile">
+  <label className="highlight-mobile">BRAND</label>
+  <button onClick={() => toggleDropdown('brand')} className="dropdown-toggle-mobile">
+    Brand
+  </button>
+  {isDropdownOpen.brand && (
+    <div className="dropdown-menu-mobile">
+      {['Nike', 'Adidas', 'Levi’s', 'Tommy Hilfiger', 'Under Armour', 'Ralph Lauren'].map((brand) => (
+        <div className="type-mobile" key={brand}>
+          <input
+            type="checkbox"
+            id={brand}
+            value={brand}
+            checked={selectedBrand.includes(brand)}
+            onChange={() => handleMultiSelect(brand, setSelectedBrand, selectedBrand)}
+          />
+          <label htmlFor={brand}>{brand}</label>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+{/* Price range selection with dropdown */}
+<div className="price-selection-mobile">
+  <label className="highlight-mobile">PRICE RANGE</label>
+  <button onClick={() => toggleDropdown('price')} className="dropdown-toggle-mobile">
+    Price
+  </button>
+  {isDropdownOpen.price && (
+    <div className="dropdown-menu-mobile">
+      <div className="price-range-mobile">
+        <div className="price-mobile">
           <input
             type="number"
             min="0"
@@ -201,7 +445,7 @@ const MensPage = () => {
           />
         </div>
         <p>To</p>
-        <div className="price">
+        <div className="price-mobile">
           <input
             type="number"
             min="0"
@@ -212,163 +456,104 @@ const MensPage = () => {
           />
         </div>
       </div>
-      <div className="price-const-range">Price: ₹{priceRange[0]} - ₹{priceRange[1]}</div>
+      <div className="price-const-range-mobile">Price: ₹{priceRange[0]} - ₹{priceRange[1]}</div>
     </div>
+  )}
+</div>
 
-    {/* Model selection */}
-    <div className="model-selection">
-      <label className="highlight">MODEL</label>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="Sporty Tee"
-          value="Sporty Tee"
-          checked={selectedModel.includes("Sporty Tee")}
-          onChange={() => handleMultiSelect("Sporty Tee", setSelectedModel, selectedModel)}
-        />
-        <label htmlFor="Sporty Tee">Sporty Tee</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="ClassicFit"
-          value="ClassicFit"
-          checked={selectedModel.includes("ClassicFit")}
-          onChange={() => handleMultiSelect("ClassicFit", setSelectedModel, selectedModel)}
-        />
-        <label htmlFor="ClassicFit">Classic Fit</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="511 Slim Fit"
-          value="511 Slim Fit"
-          checked={selectedModel.includes("511 Slim Fit")}
-          onChange={() => handleMultiSelect("511 Slim Fit", setSelectedModel, selectedModel)}
-        />
-        <label htmlFor="511 Slim Fit">511 Slim Fit</label>
-      </div>
-    </div>
 
-    {/* Rating selection */}
-    <div className="rating-selection">
-      <label className="highlight">RATING</label>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="fiveStar"
-          value="5"
-          checked={selectedRating.includes("5")}
-          onChange={() => handleMultiSelect("5", setSelectedRating, selectedRating)}
-        />
-        <label htmlFor="fiveStar">5 Stars</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="fourStar"
-          value="4"
-          checked={selectedRating.includes("4")}
-          onChange={() => handleMultiSelect("4", setSelectedRating, selectedRating)}
-        />
-        <label htmlFor="fourStar">4 Stars & Above</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="threeStar"
-          value="3"
-          checked={selectedRating.includes("3")}
-          onChange={() => handleMultiSelect("3", setSelectedRating, selectedRating)}
-        />
-        <label htmlFor="threeStar">3 Stars & Above</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="twoStar"
-          value="2"
-          checked={selectedRating.includes("2")}
-          onChange={() => handleMultiSelect("2", setSelectedRating, selectedRating)}
-        />
-        <label htmlFor="twoStar">2 Stars & Above</label>
-      </div>
-    </div>
-
-    {/* Discount selection */}
-    <div className="discount-selection">
-      <label className="highlight">DISCOUNT</label>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="sixtyPercent"
-          value="60%"
-          checked={selectedDiscount.includes("60%")}
-          onChange={() => handleMultiSelect("60%", setSelectedDiscount, selectedDiscount)}
-        />
-        <label htmlFor="sixtyPercent">60% & Above</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="fourtyPercent"
-          value="40%"
-          checked={selectedDiscount.includes("40%")}
-          onChange={() => handleMultiSelect("40%", setSelectedDiscount, selectedDiscount)}
-        />
-        <label htmlFor="fourtyPercent">40% & Above</label>
-      </div>
-      <div className="type">
-        <input
-          type="checkbox"
-          id="thirtyPercent"
-          value="30%"
-          checked={selectedDiscount.includes("30%")}
-          onChange={() => handleMultiSelect("30%", setSelectedDiscount, selectedDiscount)}
-        />
-        <label htmlFor="thirtyPercent">30% & Above</label>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  {/* Main Content */}
-  <div className="main-content">
- 
-    <div className="product-display">
-    <div className="navbar-header-mobile">
-      <div className="navbar-header-photo-mobile">
-    <img src={`${process.env.PUBLIC_URL}/assets/MenWear/header.jpg`} alt="Header Image" />
-    </div>
-    <div className="navbar-header-line-mobile">
-      <h2>MODERN MEN'S FASHION</h2>
-    </div>
-    </div>
-      <h1 className="main-content-head">CLOTHING & ACCESSORIES</h1>
-      <div className="product-display-item" >
-        {filteredMenData.map((item) => (
-          <MensItemPage
-            key={item.id}
-            id={item.id}
-            model={item.model}
-            type={item.type}
-            description={item.description}
-            cprice={item.cprice}
-            sprice={item.sprice}
-            discount={item.discount}
-            image={item.image}
-            brand={item.brand}
+{/* Rating selection */}
+<div className="rating-selection-mobile">
+  <label className="highlight-mobile">USER RATING</label>
+  <button onClick={() => toggleDropdown('rating')} className="dropdown-toggle-mobile">
+    Ratings
+  </button>
+  {isDropdownOpen.rating && (
+    <div className="dropdown-menu-mobile">
+      {['5', '4', '3', '2'].map((rating) => (
+        <div className="type-mobile" key={rating}>
+          <input
+            type="checkbox"
+            id={`rating-${rating}`}
+            value={rating}
+            checked={selectedRating.includes(rating)}
+            onChange={() => handleMultiSelect(rating, setSelectedRating, selectedRating)}
           />
-        ))}
-      </div>
+          <label htmlFor={`rating-${rating}`}>{rating} Stars & Above</label>
+        </div>
+      ))}
     </div>
+  )}
+</div>
+{/* Discount selection */}
+<div className="discount-selection-mobile">
+  <label className="highlight-mobile">DISCOUNT</label>
+  <button onClick={() => toggleDropdown('discount')} className="dropdown-toggle-mobile">
+    Discount
+  </button>
+  {isDropdownOpen.discount && (
+    <div className="dropdown-menu-mobile">
+      {['60%', '40%', '30%'].map((discount) => (
+        <div className="type-mobile" key={discount}>
+          <input
+            type="checkbox"
+            id={`discount-${discount}`}
+            value={discount}
+            checked={selectedDiscount.includes(discount)}
+            onChange={() => handleMultiSelect(discount, setSelectedDiscount, selectedDiscount)}
+          />
+          <label htmlFor={`discount-${discount}`}>{discount} & Above</label>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
   </div>
 </div>
 
-      
-    );
-  };
+        <div className="product-display"  onClick={() => {
   
-  export default MensPage;
-  
+    setIsDropdownOpen({
+      type: false,
+      brand: false,
+      price: false,
+      rating: false,
+      discount: false,
+      sort: false,
+    });
 
+  
+  }}>
+          <div className="navbar-header-mobile">
+            <div className="navbar-header-photo-mobile">
+              <img src={`${process.env.PUBLIC_URL}/assets/MenWear/header.jpg`} alt="Header Image" />
+            </div>
+            <div className="navbar-header-line-mobile">
+              <h2>MODERN MEN'S FASHION</h2>
+            </div>
+          </div>
+          <h1 className="main-content-head">CLOTHING & ACCESSORIES</h1>
+          <div className="product-display-item" >
+            {filteredMenData.map((item) => (
+              <MensItemPage
+                key={item.id}
+                id={item.id}
+                model={item.model}
+                type={item.type}
+                description={item.description}
+                cprice={item.cprice}
+                sprice={item.sprice}
+                discount={item.discount}
+                image={item.image}
+                brand={item.brand}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MensPage;
