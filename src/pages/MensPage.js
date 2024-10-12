@@ -348,9 +348,9 @@ const MensPage = () => {
  
   <div className="sort-by-selection-mobile">
   <label className="highlight-mobile">SORT BY</label>
-  <button onClick={() => toggleDropdown('sort')} className="dropdown-toggle-mobile">
+  <div className="for-margin"><button onClick={() => toggleDropdown('sort')} className="dropdown-toggle-mobile">
     Sort
-  </button>
+  </button></div>
   {isDropdownOpen.sort && (
     <div className="dropdown-menu-mobile">
        <div className="type-mobile" onClick={() => handleSort('relevant')}>
@@ -375,10 +375,10 @@ const MensPage = () => {
     {/* Type selection */}
     <div className="type-selection-mobile ">
   <label className="highlight-mobile">CATEGORIES</label>
-  <button onClick={() => toggleDropdown('type')} className="dropdown-toggle-mobile">
+  <div className="for-margin"><button onClick={() => toggleDropdown('type')} className="dropdown-toggle-mobile">
    
     Categories
-  </button>
+  </button></div>
   {isDropdownOpen.type && (
     <div className="dropdown-menu-mobile">
       {['Mens Plain Tshirts', 'Dress Shirt', 'Jeans', 'Hoodie', 'Blazer', 'Jacket'].map((type) => (
@@ -404,9 +404,9 @@ const MensPage = () => {
 {/* Brand selection */}
 <div className="brand-selection-mobile">
   <label className="highlight-mobile">BRAND</label>
-  <button onClick={() => toggleDropdown('brand')} className="dropdown-toggle-mobile">
+  <div className="for-margin"><button onClick={() => toggleDropdown('brand')} className="dropdown-toggle-mobile">
     Brand
-  </button>
+  </button></div>
   {isDropdownOpen.brand && (
     <div className="dropdown-menu-mobile">
       {['Nike', 'Adidas', 'Levi’s', 'Tommy Hilfiger', 'Under Armour', 'Ralph Lauren'].map((brand) => (
@@ -428,9 +428,9 @@ const MensPage = () => {
 {/* Price range selection with dropdown */}
 <div className="price-selection-mobile">
   <label className="highlight-mobile">PRICE RANGE</label>
-  <button onClick={() => toggleDropdown('price')} className="dropdown-toggle-mobile">
+  <div className="for-margin"><button onClick={() => toggleDropdown('price')} className="dropdown-toggle-mobile">
     Price
-  </button>
+  </button></div>
   {isDropdownOpen.price && (
     <div className="dropdown-menu-mobile">
       <div className="price-range-mobile">
@@ -465,9 +465,9 @@ const MensPage = () => {
 {/* Rating selection */}
 <div className="rating-selection-mobile">
   <label className="highlight-mobile">USER RATING</label>
-  <button onClick={() => toggleDropdown('rating')} className="dropdown-toggle-mobile">
+  <div className="for-margin"> <button onClick={() => toggleDropdown('rating')} className="dropdown-toggle-mobile">
     Ratings
-  </button>
+  </button></div>
   {isDropdownOpen.rating && (
     <div className="dropdown-menu-mobile">
       {['5', '4', '3', '2'].map((rating) => (
@@ -488,9 +488,9 @@ const MensPage = () => {
 {/* Discount selection */}
 <div className="discount-selection-mobile">
   <label className="highlight-mobile">DISCOUNT</label>
-  <button onClick={() => toggleDropdown('discount')} className="dropdown-toggle-mobile">
+  <div className="for-margin"> <button onClick={() => toggleDropdown('discount')} className="dropdown-toggle-mobile">
     Discount
-  </button>
+  </button></div>
   {isDropdownOpen.discount && (
     <div className="dropdown-menu-mobile">
       {['60%', '40%', '30%'].map((discount) => (
