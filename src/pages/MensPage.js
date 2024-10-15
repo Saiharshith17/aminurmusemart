@@ -1,8 +1,9 @@
 import React, { useState,useEffect } from 'react';
 import { menData } from '../data/mens';
 import './MensPage.css';
-
+// import {Navbar} from './Navbar'
 import MensItemPage from './MensItemPage';
+import Footer from './Footer';
 
 const MensPage = () => {
   const [priceRange, setPriceRange] = useState([0, 5000]);
@@ -113,6 +114,8 @@ const MensPage = () => {
   
   
   return (
+    <>
+    {/* <Navbar/> */}
     <div className="page-container">
       <div className="navbar-filters">
         <div className="navbar-header">
@@ -553,7 +556,9 @@ const MensPage = () => {
         </div>
       </div>
     </div>
-  );
+    <Footer/>
+    </>
+ );
 };
 
 export default MensPage;
