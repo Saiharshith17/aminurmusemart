@@ -1,5 +1,18 @@
 export const womenData = [
-   
+    {
+        "id": "1",
+        "product": "Woman Wear",
+        "image": "/src/assets/Woman/1.jpg",
+        "type": "Dress",
+        "brand": "Zara",
+        "model": "Flowy Maxi",
+        "cprice": "1290.99",
+        "discount":"60",
+        "rating":"5",
+        "sprice" :"510.99",  
+        "category": "Clothing",
+        "description": "A flowy maxi dress with floral patterns, perfect for summer occasions."
+    },
     {
         "id": "2",
         "product": "Woman Wear",
