@@ -1,5 +1,18 @@
 export const kidsData = [
-
+  {
+      "id": "26",
+      "product": "Kids Wear",
+      "image": "/src/assets/Kids/13.png",
+      "type": "Shirt",
+      "brand": "H&M",
+      "model": "Casual Kids Shirt",
+      "cprice": "1290.99",
+        "discount":"60",
+        "rating":"5",
+        "sprice" :"510.99", 
+      "category": "Clothing",
+      "description": "A lightweight casual shirt perfect for summer outings."
+  },
   {
       "id": "27",
       "product": "Kids Wear",
