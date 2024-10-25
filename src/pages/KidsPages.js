@@ -2,8 +2,9 @@ import React, { useState,useEffect } from 'react'
 import { kidsData} from '../data/kids';
 
 import './MensPage.css';
-import MensItemPage from './MensItemPage';
+
 import { useParams } from 'react-router-dom';
+import KidsItemPage from './KidsItemPage';
 function KidsPages() {
       const [priceRange, setPriceRange] = useState([0, 5000]);
   const [selectedDiscount, setSelectedDiscount] = useState('');
@@ -798,7 +799,7 @@ useEffect(()=>{
       <div className="product-display-item">
         {filteredMenData && filteredMenData.length > 0 ? (
           filteredMenData.map((item) => (
-            <MensItemPage
+            <KidsItemPage
               key={item.id}
               id={item.id}
               model={item.model}
