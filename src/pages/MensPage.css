@@ -333,7 +333,6 @@ input[type="checkbox"] {
 @media (max-width:1090px){
   .navbar-filters {
     width: 30%;
-    
     overflow-y: auto;
     scrollbar-width: none;
     padding: 0px; 
